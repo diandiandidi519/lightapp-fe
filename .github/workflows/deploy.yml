@@ -40,13 +40,11 @@ jobs:
 
       # 上传打包文件到远程服务器
       - name: 上传文件到远程服务器
-        uses: zhenyuWang/Upload-File-Action@v1.0.1
-        with:
-          username: 'root'
-          server: '59.110.140.36'
-          port: '22'
-          ssh_private_key: ${{ secrets.WFP_ID_RSA }}
-          # 要上传文件所在目录
-          local_path: './dist/*'
-          # 远程服务器目标路径
-          target_path: '/home/work/lightapp/app/manage'
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          SSH_PRIVATE_KEY: ${{ env.WFP_ID_RSA }}
+          ARGS: '-avz --delete'
+          SOURCE: 'dist/'
+          REMOTE_HOST: 59.110.140.36
+          REMOTE_USER: work
+          TARGET: /home/work/lightapp/app/manage # 服务器目标路径
