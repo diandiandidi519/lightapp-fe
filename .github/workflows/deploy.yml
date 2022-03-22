@@ -45,6 +45,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.WFP_ID_RSA }}
           ARGS: '-rltgoDzvO --delete'
           SOURCE: 'dist/*'
-          REMOTE_HOST: '59.110.140.36'
-          REMOTE_USER: 'work'
+          REMOTE_HOST: ${{ secrets.WFP_IP }}
+          REMOTE_USER: ${{ secrets.WFP_USER }}
           TARGET: '/home/work/lightapp/app/manage' # 服务器目标路径
