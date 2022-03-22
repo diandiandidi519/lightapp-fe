@@ -6,6 +6,7 @@ import proxy from './proxy';
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   base: '/manage',
+  publicPath: process.env.NODE_ENV === 'production' ? '/manage/' : '/',
   hash: true,
   antd: {},
   dva: {
